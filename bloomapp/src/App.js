@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ChakraProvider,
   Box,
+  Center,
   Text,
   Link,
   VStack,
@@ -13,7 +14,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
 import NatureCard from './Components/NatureCard';
-
+import NatureCardDisplay from './Components/NatureCardDisplay';
 const theme2 = extendTheme({
   colors: {
     blue: {
@@ -34,9 +35,11 @@ const theme2 = extendTheme({
 function App() {
   return (
     <ChakraProvider theme={theme2}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <NatureCard />
+      <Box textAlign="center" fontSize="xl" bg="blue.100">
+        <Center>
+          <NatureCardDisplay />
+        </Center>
+        {/* <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
             <Logo h="40vmin" pointerEvents="none" />
@@ -53,7 +56,7 @@ function App() {
               Learn Chakra
             </Link>
           </VStack>
-        </Grid>
+        </Grid> */}
       </Box>
     </ChakraProvider>
   );

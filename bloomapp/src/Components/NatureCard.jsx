@@ -11,10 +11,10 @@ import {
 
 const NatureCard = ({ name, img, description }) => {
   return (
-    <Box w="300px" h="400px" bg="gray_pink.100" borderRadius="lg">
-      <Box h="250">
+    <Box w="250px" h="350px" bg="pink.100" borderRadius="lg">
+      <Box h="200">
         {img == null ? (
-          <Box w="full" h="full" bg="blue.100" borderTopRadius="lg"></Box>
+          <Box w="full" h="full" bg="gray.100" borderTopRadius="lg"></Box>
         ) : (
           <Img alt="" fluid={img} />
         )}
