@@ -13,7 +13,6 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
-import NatureCard from './Components/NatureCard';
 import NatureCardDisplay from './Components/NatureCardDisplay';
 const theme2 = extendTheme({
   colors: {
