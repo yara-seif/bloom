@@ -14,6 +14,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
 import NatureCardDisplay from './Components/NatureCardDisplay';
+import Header from './Components/Header';
 const theme2 = extendTheme({
   colors: {
     blue: {
@@ -35,6 +36,7 @@ function App() {
   return (
     <ChakraProvider theme={theme2}>
       <Box textAlign="center" fontSize="xl" bg="blue.100">
+        <Header />
         <Center>
           <NatureCardDisplay />
         </Center>
