@@ -12,6 +12,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 const theme2 = extendTheme({
   colors: {
@@ -53,8 +54,10 @@ function App() {
           </VStack>
         </Grid>
       </Box>
+      <AmplifySignOut />
     </ChakraProvider>
+
   );
 }
 
-export default App;
+export default withAuthenticator(App);
