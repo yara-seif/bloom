@@ -13,10 +13,15 @@ import {
     DrawerCloseButton,
     Button, Input, useDisclosure, FormControl, FormLabel, FormErrorMessage
   } from "@chakra-ui/react";
+import { BloomContext } from '../Hooks/BloomContextProvider';
+
+
 
   const initialFormState = { name: '', description: '', image: ''}
-  function SizeExample() {
+  
+  function UploadABloom() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const {blooms, setBlooms} = React.useContext(BloomContext)
     const btnRef = React.useRef()
     const [notes, setNotes] = React.useState([]);
     const [formData, setFormData] = React.useState(initialFormState);
@@ -41,7 +46,8 @@ import {
         }
         return note;
       }))
-      setNotes(apiData.data.listTodos.items);
+      setBlooms(apiData.data.listTodos.items);
+      // setNotes(apiData.data.listTodos.items);
     }
     
     async function createNote() {
@@ -51,13 +57,16 @@ import {
         const image = await Storage.get(formData.image);
         formData.image = image;
       }
-      setNotes([ ...notes, formData ]);
+      setBlooms([ ... blooms, formData ]);
+      // setNotes([ ...notes, formData ]);
       setFormData(initialFormState);
     }
 
     async function deleteNote({ id }) {
-      const newNotesArray = notes.filter(note => note.id !== id);
-      setNotes(newNotesArray);
+      // const newNotesArray = notes.filter(note => note.id !== id);
+      const newNotesArray = blooms.filter(bloom=> bloom.id !== id);
+      setBlooms(newNotesArray);
+      // setNotes(newNotesArray);
       await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
     }
 
@@ -65,8 +74,6 @@ import {
       let error
       if (!value) {
         error = "Name is required"
-      } else if (value.toLowerCase() !== "naruto") {
-        error = "Jeez! You're not a fan 😱"
       }
       return error
     }
@@ -113,19 +120,19 @@ import {
           </Field>
           <Field name="description">
             {({ field, form }) => (
-              <FormControl isInvalid={form.errors.name && form.touched.name}>
+              <FormControl>
                 <FormLabel htmlFor="description">Description</FormLabel>
-                <Input {...field} id="name" onChange={e => setFormData({ ...formData, 'description': e.target.value})} placeholder="name"/>
-                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                <Input {...field} id="description" onChange={e => setFormData({ ...formData, 'description': e.target.value})} placeholder="name"/>
+                <FormErrorMessage>{form.errors.description}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
           <Field name="image">
             {({ field, form }) => (
-              <FormControl isInvalid={form.errors.name && form.touched.name}>
+              <FormControl>
                 <FormLabel htmlFor="upload">Upload an Image</FormLabel>
                 <Input {...field}  type="file" onChange={onChange}/>
-                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                <FormErrorMessage>{form.errors.image}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -140,13 +147,13 @@ import {
 
           <div style={{marginBottom: 30}}>
         {
-          notes.map(note => (
-            <div key={note.id || note.name}>
-      <h2>{note.name}</h2>
-      <p>{note.description}</p>
-      <button onClick={() => deleteNote(note)}>Delete note</button>
+          blooms.map(bloom => (
+            <div key={bloom.id || bloom.name}>
+      <h2>{bloom.name}</h2>
+      <p>{bloom.description}</p>
+      <button onClick={() => deleteNote(bloom)}>Delete note</button>
       {
-        note.image && <img src={note.image} style={{width: 400}} />
+        bloom.image && <img src={bloom.image} style={{width: 400}} />
       }
     </div>
           ))
@@ -171,4 +178,4 @@ import {
     )
   }
 
-  export default SizeExample
+  export default UploadABloom

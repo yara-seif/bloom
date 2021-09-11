@@ -10,8 +10,13 @@ import {
 } from '@chakra-ui/react';
 import { Grid, GridItem } from '@chakra-ui/layout';
 import NatureCard from './NatureCard';
+import { BloomContext } from '../Hooks/BloomContextProvider';
+
+
+
 
 const NatureCardDisplay = () => {
+  const {blooms} = React.useContext(BloomContext)
   const names = [
     ' yo1',
     ' yo2',
@@ -30,9 +35,9 @@ const NatureCardDisplay = () => {
         templateColumns={{ base: 'repeat(1, 250px)', md: 'repeat(4, 250px)' }}
         gap="30px"
       >
-        {names.map((item, index) => (
+        {blooms.map((bloom) => (
           <GridItem>
-            <NatureCard name={item} />
+            <NatureCard name={bloom.name} img = {bloom.image} description = {bloom.description} id = {bloom.id}/>
           </GridItem>
         ))}
       </Grid>

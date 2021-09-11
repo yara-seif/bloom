@@ -16,6 +16,7 @@ import { Logo } from './Logo';
 import NatureCardDisplay from './Components/NatureCardDisplay';
 import Header from './Components/Header';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import BloomContextProvider from './Hooks/BloomContextProvider';
 const theme2 = extendTheme({
   colors: {
     blue: {
@@ -38,6 +39,7 @@ const theme2 = extendTheme({
 function App() {
 
   return (
+    <BloomContextProvider>
     <ChakraProvider theme={theme2}>
       <Box textAlign="center" fontSize="xl" bg="blue.100">
         <Header />
@@ -47,6 +49,8 @@ function App() {
       </Box>
       <AmplifySignOut />
     </ChakraProvider>
+    </BloomContextProvider>
+
   );
 }
 
