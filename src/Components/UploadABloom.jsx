@@ -168,6 +168,7 @@ function UploadABloom() {
                             })
                           }
                           placeholder="description"
+                          maxLength="100"
                         />
                         <FormErrorMessage>
                           {form.errors.description}

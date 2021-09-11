@@ -55,7 +55,9 @@ const NatureCard = ({ name, img, description, id }) => {
           {name}
         </Heading>
 
-        <Text fontSize="sm"> {description} </Text>
+        <Text fontSize="sm" textAlign="left">
+          {description}
+        </Text>
       </VStack>
       <Button
         mt={{ base: '30%', md: '8%' }}
