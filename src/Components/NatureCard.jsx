@@ -44,19 +44,30 @@ const NatureCard = ({ name, img, description, id }) => {
           />
         )}
       </Box>
-      <VStack ml="7px" float="left" alignItems="flex-start">
+      <VStack
+        position="absolute"
+        ml="7px"
+        float="left"
+        alignItems="flex-start"
+        w="240px"
+      >
         <Heading fontFamily="Allison" size="lg">
           {name}
         </Heading>
 
-        <Text fontSize="sm"> {description} </Text>
+        <Text fontSize="sm" textAlign="left">
+          {description}
+        </Text>
       </VStack>
       <Button
-        mt="110px"
-        mr="2%"
+        mt={{ base: '30%', md: '8%' }}
+        position="absolute"
         float="right"
+        ml={{ base: '6%', md: '2%' }}
         size="sm"
         bg="blue.100"
+        fontFamily="Allison"
+        fontSize="20px"
         onClick={() => deleteNote(id)}
       >
         Delete memory

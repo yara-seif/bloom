@@ -17,7 +17,7 @@ const About = () => {
       <Text
         p={{ base: '10px', md: '30px' }}
         fontSize={{ base: 'sm', md: '2xl' }}
-        fontFamily="cursive"
+        fontFamily="serif"
       >
         Welcome to Memories! For the programming assignment, we decided to
         create a mobile-adaptive website that allows one to capture and preserve
@@ -29,7 +29,7 @@ const About = () => {
         pl={{ base: '10px', md: '30px' }}
         pr={{ base: '10px', md: '30px' }}
         fontSize={{ base: 'sm', md: '2xl' }}
-        fontFamily="cursive"
+        fontFamily="serif"
       >
         Using this website is simple! All you have to do is click the "Upload a
         Memory" button and fill out the form with details regarding your memory.
@@ -42,7 +42,7 @@ const About = () => {
         pr={{ base: '10px', md: '30px' }}
         mt={{ base: '10px', md: '30px' }}
         fontSize={{ base: 'sm', md: '2xl' }}
-        fontFamily="cursive"
+        fontFamily="serif"
       >
         We hope you enjoy the site!
       </Text>
@@ -50,7 +50,7 @@ const About = () => {
         pl={{ base: '10px', md: '30px' }}
         pr={{ base: '10px', md: '30px' }}
         fontSize={{ base: 'sm', md: '2xl' }}
-        fontFamily="cursive"
+        fontFamily="serif"
       >
         Developers: Yara Seif and Varshita Patakottu
       </Text>

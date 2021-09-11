@@ -28,7 +28,6 @@ const NatureCardDisplay = () => {
   return (
     <Grid
       mt="5%"
-      mr={{ base: '18%', md: 'none' }}
       mb="30%"
       templateColumns={{ base: 'repeat(1, 250px)', md: 'repeat(4, 250px)' }}
       gap="30px"

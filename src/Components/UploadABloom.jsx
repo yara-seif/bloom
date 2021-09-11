@@ -20,6 +20,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Textarea,
 } from '@chakra-ui/react';
 import { BloomContext } from '../Hooks/BloomContextProvider';
 
@@ -106,7 +107,7 @@ function UploadABloom() {
         pl="5px"
         float="right"
         fontFamily="Allison"
-        ml={{ base: '10%', md: '68%' }}
+        ml={{ base: '25%', md: '68%' }}
         fontSize={{ base: 25, md: 40 }}
       >
         Upload a Memory
@@ -120,7 +121,7 @@ function UploadABloom() {
         <DrawerOverlay />
         <DrawerContent overflowY="auto">
           <DrawerCloseButton />
-          <DrawerHeader>Upload a Bloom</DrawerHeader>
+          <DrawerHeader>Upload a Memory</DrawerHeader>
 
           <DrawerBody>
             <Formik
@@ -157,7 +158,7 @@ function UploadABloom() {
                         <FormLabel mt="10%" htmlFor="description">
                           Description
                         </FormLabel>
-                        <Input
+                        <Textarea
                           {...field}
                           id="description"
                           onChange={e =>
@@ -167,6 +168,7 @@ function UploadABloom() {
                             })
                           }
                           placeholder="description"
+                          maxLength="100"
                         />
                         <FormErrorMessage>
                           {form.errors.description}
