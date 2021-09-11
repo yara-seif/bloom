@@ -52,7 +52,8 @@ import { BloomContext } from '../Hooks/BloomContextProvider';
     
     async function createNote() {
       if (!formData.name || !formData.description) return;
-      await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+      var response = await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+      console.log("create note response", response)
       if (formData.image) {
         const image = await Storage.get(formData.image);
         formData.image = image;
@@ -62,12 +63,14 @@ import { BloomContext } from '../Hooks/BloomContextProvider';
       setFormData(initialFormState);
     }
 
-    async function deleteNote({ id }) {
+    async function deleteNote({id}) {
       // const newNotesArray = notes.filter(note => note.id !== id);
       const newNotesArray = blooms.filter(bloom=> bloom.id !== id);
       setBlooms(newNotesArray);
       // setNotes(newNotesArray);
-      await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+      var response = await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+      console.log("deleted id",id)
+      console.log("response", response)
     }
 
     function validateName(value) {
@@ -143,23 +146,7 @@ import { BloomContext } from '../Hooks/BloomContextProvider';
               <Button colorScheme="blue"
             isLoading={props.isSubmitting}
             type="submit" onClick={createNote}>Save</Button>
-            </DrawerFooter>
-
-          <div style={{marginBottom: 30}}>
-        {
-          blooms.map(bloom => (
-            <div key={bloom.id || bloom.name}>
-      <h2>{bloom.name}</h2>
-      <p>{bloom.description}</p>
-      <button onClick={() => deleteNote(bloom)}>Delete note</button>
-      {
-        bloom.image && <img src={bloom.image} style={{width: 400}} />
-      }
-    </div>
-          ))
-        }
-        </div>
-          
+            </DrawerFooter> 
          
         </Form>
       )}

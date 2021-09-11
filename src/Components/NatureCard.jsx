@@ -13,9 +13,10 @@ import { BloomContext } from '../Hooks/BloomContextProvider';
 import { API, Storage } from 'aws-amplify';
 import { createTodo as createNoteMutation, deleteTodo as deleteNoteMutation } from './../graphql/mutations';
 
+
 const NatureCard = ({ name, img, description, id}) => {
 const {blooms, setBlooms} = React.useContext(BloomContext)
-async function deleteNote({ id }) {
+async function deleteNote(id) {
   // const newNotesArray = notes.filter(note => note.id !== id);
   const newNotesArray = blooms.filter(bloom=> bloom.id !== id);
   setBlooms(newNotesArray);
