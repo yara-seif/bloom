@@ -122,7 +122,7 @@ import { BloomContext } from '../Hooks/BloomContextProvider';
             {({ field, form }) => (
               <FormControl>
                 <FormLabel htmlFor="description">Description</FormLabel>
-                <Input {...field} id="description" onChange={e => setFormData({ ...formData, 'description': e.target.value})} placeholder="name"/>
+                <Input {...field} id="description" onChange={e => setFormData({ ...formData, 'description': e.target.value})} placeholder="description"/>
                 <FormErrorMessage>{form.errors.description}</FormErrorMessage>
               </FormControl>
             )}

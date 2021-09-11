@@ -36,7 +36,7 @@ async function deleteNote({ id }) {
           Name:{name}
         </Heading>
 
-        <Text fontSize="sm"> Description: {description} </Text>
+        <Text fontSize="sm"> {description} </Text>
         <Button bg="blue.100" onClick={() => deleteNote(id)}>Delete bloom</Button>
       </VStack>
     </Box>

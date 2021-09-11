@@ -9,7 +9,6 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import UploadABloom from './UploadABloom';
-import SizeExample from './drawertry.jsx';
 
 const Header = ({ name, img, description }) => {
   return (
