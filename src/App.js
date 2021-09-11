@@ -4,17 +4,23 @@ import {
   Box,
   Center,
   Text,
-  Link,
   VStack,
   Code,
   Grid,
   theme,
 } from '@chakra-ui/react';
+
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
 import NatureCardDisplay from './Components/NatureCardDisplay';
 import Header from './Components/Header';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import BloomContextProvider from './Hooks/BloomContextProvider';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import About from './Components/About';
+import Home from './Components/Home';
+
 const theme2 = extendTheme({
   colors: {
     blue: {
@@ -34,33 +40,20 @@ const theme2 = extendTheme({
 
 function App() {
   return (
-    <ChakraProvider theme={theme2}>
-      <Box textAlign="center" fontSize="xl" bg="blue.100">
-        <Header />
-        <Center>
-          <NatureCardDisplay />
-        </Center>
-        {/* <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid> */}
-      </Box>
-    </ChakraProvider>
+    <BloomContextProvider>
+      <ChakraProvider theme={theme2}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={() => <Home />} />
+            <Route path="/about" exact component={() => <About />} />
+          </Switch>
+        </Router>
+
+        <AmplifySignOut />
+      </ChakraProvider>
+    </BloomContextProvider>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
