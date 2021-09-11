@@ -4,19 +4,23 @@ import {
   Box,
   Center,
   Text,
-  Link,
   VStack,
   Code,
   Grid,
   theme,
 } from '@chakra-ui/react';
+
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { extendTheme } from '@chakra-ui/react';
 import { Logo } from './Logo';
 import NatureCardDisplay from './Components/NatureCardDisplay';
 import Header from './Components/Header';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import BloomContextProvider from './Hooks/BloomContextProvider';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import About from './Components/About';
+import Home from './Components/Home';
+
 const theme2 = extendTheme({
   colors: {
     blue: {
@@ -31,26 +35,24 @@ const theme2 = extendTheme({
     pink: {
       100: '#FFE3E3',
     },
-    
   },
 });
 
-
 function App() {
-
   return (
     <BloomContextProvider>
-    <ChakraProvider theme={theme2}>
-      <Box textAlign="center" fontSize="xl" bg="blue.100">
-        <Header />
-        <Center>
-          <NatureCardDisplay />
-        </Center>
-      </Box>
-      <AmplifySignOut />
-    </ChakraProvider>
-    </BloomContextProvider>
+      <ChakraProvider theme={theme2}>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={() => <Home />} />
+            <Route path="/about" exact component={() => <About />} />
+          </Switch>
+        </Router>
 
+        <AmplifySignOut />
+      </ChakraProvider>
+    </BloomContextProvider>
   );
 }
 
