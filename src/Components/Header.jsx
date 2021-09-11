@@ -8,6 +8,8 @@ import {
   Flex,
   Spacer,
 } from '@chakra-ui/react';
+import UploadABloom from './UploadABloom';
+import SizeExample from './drawertry.jsx';
 
 const Header = ({ name, img, description }) => {
   return (
@@ -15,6 +17,8 @@ const Header = ({ name, img, description }) => {
       <Heading ml="15px" mt="20px" float="left" fontFamily="Allison" size="3xl">
         Bloom
       </Heading>
+      {/* <SizeExample/> */}
+      <UploadABloom/>
     </Box>
   );
 };
